@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Rubik } from 'next/font/google'
 import './globals.css'
-import Provider from '@/app/Provider'
+import ThemeProvider from '@/app/ThemeProvider'
 
 const rubik = Rubik({ subsets: ['latin'] })
 
@@ -17,11 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={rubik.className}>
-      <Provider>
-        <main>
-          {children}
-        </main>
-      </Provider>
+        <ThemeProvider>
+          <main>
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   )
