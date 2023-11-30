@@ -7,11 +7,11 @@ function ScoreBox({ category, score, maxScore }: { category: Category, score: nu
     <div className={`flex flex-col items-center gap-y-4 p-8 rounded-xl bg-white dark:bg-navy`}>
       <div className={`flex flex-row items-center justify-center gap-x-4`}>
         <CategoryIcon category={category} />
-        <span className={`font-heading-sm text-dark_navy dark:text-white`}>
+        <span className={`font-heading-sm`}>
             {category}
           </span>
       </div>
-      <div className={`text-center font-display text-dark_navy dark:text-white`}>
+      <div className={`text-center font-display`}>
         {score}
       </div>
       <div className={`text-center font-body-md text-gray_navy dark:text-light_bluish`}>
