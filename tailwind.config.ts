@@ -28,6 +28,9 @@ const config: Config = {
     }
   },
   plugins: [],
-  darkMode: 'class'
+  darkMode: 'class',
+  future: {
+    hoverOnlyWhenSupported: true
+  }
 }
 export default config
