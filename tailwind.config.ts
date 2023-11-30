@@ -25,6 +25,10 @@ const config: Config = {
       icon_green: '#E0FDEF',
       icon_blue: '#EBF0FF',
       icon_purple: '#F6E7FF'
+    },
+    boxShadow: {
+      'button-light': '0px 16px 40px 0px rgba(143, 160, 193, 0.14)',
+      'button-dark': '0px 16px 40px 0px rgba(49, 62, 81, 0.14)'
     }
   },
   plugins: [],

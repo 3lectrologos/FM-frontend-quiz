@@ -5,7 +5,7 @@ import Button from '@/app/Button'
 
 function ScoreBox({ category, score, maxScore }: { category: Category, score: number, maxScore: number }) {
   return (
-    <div className={`flex flex-col items-center gap-y-4 p-8 rounded-xl bg-white dark:bg-navy`}>
+    <div className={`flex flex-col items-center gap-y-4 p-8 rounded-xl bg-white dark:bg-navy shadow-button-light dark:shadow-button-dark`}>
       <div className={`flex flex-row items-center justify-center gap-x-4`}>
         <CategoryIcon category={category} />
         <span className={`font-heading-sm`}>
@@ -22,12 +22,12 @@ function ScoreBox({ category, score, maxScore }: { category: Category, score: nu
   )
 }
 
-export default function ScorePage({ category, score, maxScore }: { category: Category, score: number, maxScore: number }) {
+export default function ScorePage({ category, score, maxScore, onAgain }: { category: Category, score: number, maxScore: number, onAgain: () => void }) {
   return (
     <div className={`flex flex-col gap-y-10`}>
       <Title t1='Quiz completed' t2='You scored...' />
       <ScoreBox category={category} score={score} maxScore={maxScore} />
-      <Button text='Play Again' />
+      <Button text='Play Again' onClick={onAgain} />
     </div>
   )
 }
