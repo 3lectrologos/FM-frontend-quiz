@@ -6,7 +6,7 @@ function CategoryButton({ category, onClick }: { category: Category, onClick: ()
   const iconURL = `/images/icon-${category.toLowerCase()}.svg`
   return (
     <div
-      className={`flex flex-row items-center gap-x-4 rounded-xl p-3 bg-white dark:bg-navy shadow-button-light dark:shadow-button-dark`}
+      className={`flex flex-row items-center gap-x-4 rounded-xl p-3 bg-white dark:bg-navy shadow-button-light dark:shadow-button-dark tablet:gap-x-8 tablet:rounded-3xl desktop:p-5`}
       onClick={onClick}
     >
       <CategoryIcon category={category} />
@@ -19,7 +19,7 @@ function CategoryButton({ category, onClick }: { category: Category, onClick: ()
 
 function Categories({ onClick }: { onClick: (category: Category) => void }) {
   return (
-    <div className={`flex flex-col gap-y-3`}>
+    <div className={`flex flex-col gap-y-3 tablet:gap-y-6`}>
       {CATEGORIES.map((category) =>
         <CategoryButton
           key={category}
@@ -33,7 +33,7 @@ function Categories({ onClick }: { onClick: (category: Category) => void }) {
 
 export default function LandingPage({ onSelect }: { onSelect: (category: Category) => void }) {
   return (
-    <div className={`flex flex-col gap-y-10`}>
+    <div className={`flex flex-col gap-y-10 tablet:gap-y-16`}>
       <Title t1='Welcome to the' t2='Frontend Quiz!' sub='Pick a subject to get started.' />
       <Categories onClick={onSelect} />
     </div>

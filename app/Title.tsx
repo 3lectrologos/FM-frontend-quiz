@@ -1,6 +1,6 @@
-export default function Title({ t1, t2, sub=undefined }: { t1: string, t2: string, sub?: string }) {
+export default function Title({ t1, t2, sub=undefined, className='' }: { t1: string, t2: string, sub?: string, className?: string }) {
   return  (
-    <h1 className={`flex flex-col gap-y-2`}>
+    <h1 className={`flex flex-col gap-y-2 ${className}`}>
       <span className={`font-heading-lg-regular`}>
         {t1}
       </span>

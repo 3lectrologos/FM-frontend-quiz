@@ -23,7 +23,7 @@ export default function CategoryIcon({ category }: { category: Category }) {
   }
 
   return (
-    <div className={`shrink-0 w-10 h-10 ${bgColor} p-[5.7px] rounded`}>
+    <div className={`shrink-0 w-10 h-10 ${bgColor} p-[5.7px] rounded tablet:w-14 tablet:h-14 tablet:rounded-xl tablet:p-2`}>
       <div className={`relative w-full h-full`}>
         <Image src={iconURL}
                alt={`${capitalizedName} icon`}

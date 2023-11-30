@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 function QuestionTitle({ question, idx, maxIdx, className='' }: { question: Question, idx: number, maxIdx: number, className?: string }) {
   return (
-    <div className={`flex flex-col gap-3 ${className}`}>
+    <div className={`flex flex-col gap-3 tablet:gap-7 ${className}`}>
       <span className={`font-body-sm text-gray_navy dark:text-light_bluish`}>
         Question {idx + 1} of {maxIdx}
       </span>
@@ -34,13 +34,14 @@ function Options( { options, className='', onClick, selected=null, isCorrect=nul
   const listIds = ['A', 'B', 'C', 'D', 'E', 'F']
 
   return (
-    <div className={`flex flex-col gap-y-3 ${className}`}>
+    <div className={`flex flex-col gap-y-3 tablet:gap-y-6 ${className}`}>
       {options.slice(0, listIds.length).map((choice, idx) =>
         <button
           className={twMerge(
             `transition-none flex flex-row items-center rounded-xl p-3 gap-4 bg-white dark:bg-navy ring-inset ring-[3px] shadow-button-light dark:shadow-button-dark`,
             `${selected === idx && isCorrect === null && 'transition'}`,
             `${(selected === idx) ? ((isCorrect === null) ? 'ring-purple' : (isCorrect ? 'ring-green' : 'ring-red')) : 'ring-purple/0'}`,
+            `tablet:rounded-3xl`
             )}
           key={idx}
           onClick={() => onClick(idx)}
@@ -49,7 +50,8 @@ function Options( { options, className='', onClick, selected=null, isCorrect=nul
             `w-10 h-10 flex items-center justify-center shrink-0 rounded bg-light_gray font-heading-sm text-gray_navy`,
             `${selected === idx && isCorrect === null && 'transition'}`,
             `${(selected === idx) && 'text-white'}`,
-            `${(selected === idx) && ((isCorrect === null) ? 'bg-purple' : (isCorrect ? 'bg-green' : 'bg-red'))}`
+            `${(selected === idx) && ((isCorrect === null) ? 'bg-purple' : (isCorrect ? 'bg-green' : 'bg-red'))}`,
+            `tablet:w-14 tablet:h-14 tablet:rounded-xl`
           )}
           >
             {listIds[idx]}
@@ -58,7 +60,7 @@ function Options( { options, className='', onClick, selected=null, isCorrect=nul
             {choice}
           </span>
           <div className={`flex-grow`} />
-          <div className={`relative shrink-0 w-8 h-8`}>
+          <div className={`relative shrink-0 w-8 h-8 tablet:w-10 tablet:h-10`}>
             {correct === idx && isCorrect !== null && <Image src='/images/icon-correct.svg' alt='Correct icon' fill />}
             {selected === idx && isCorrect === false && <Image src='/images/icon-error.svg' alt='Error icon' fill />}
           </div>
@@ -110,19 +112,19 @@ export default function QuestionPage({ questions, onFinished }: { questions: Que
 
   return (
     <div className={`flex flex-col`}>
-      <QuestionTitle className={`mb-6`}
+      <QuestionTitle className={`mb-6 tablet:mb-10`}
         idx={idx} maxIdx={questions.length} question={questions[idx]} />
-      <ProgressBar className={`mb-10`}
+      <ProgressBar className={`mb-10 tablet:mb-16`}
         idx={idx} maxIdx={questions.length} />
       <Options
-        className={`mb-3`}
+        className={`mb-3 tablet:mb-8`}
         options={questions[idx].options}
         selected={selected}
         isCorrect={isCorrect}
         correct={questions[idx].options.indexOf(questions[idx].answer)}
         onClick={onClick}
       />
-      <div className={`mb-3`}>
+      <div className={`mb-3 tablet:mb-8`}>
       { hasAnswered ?
         <Button
           text='Next Question'
@@ -136,7 +138,7 @@ export default function QuestionPage({ questions, onFinished }: { questions: Que
       </div>
       { showError &&
         <div className={`flex flex-row items-center gap-x-2 mx-auto`}>
-          <div className={`relative shrink-0 w-8 h-8`}>
+          <div className={`relative shrink-0 w-8 h-8 tablet:w-10 tablet:h-10`}>
             <Image src='/images/icon-error.svg' alt='Error icon' fill />
           </div>
           <span className={`font-body-md text-center text-red dark:text-white`}>
