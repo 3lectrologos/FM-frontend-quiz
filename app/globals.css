@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.font-display {
+  @apply text-[88px] tablet:text-[144px] font-[500] leading-[100%];
+}
+
+.font-heading-lg-bold {
+  @apply text-[40px] tablet:text-[64px] font-[500] leading-[100%];
+}
+
+.font-heading-lg-regular {
+  @apply text-[40px] tablet:text-[64px] font-[300] leading-[100%];
+}
+
+.font-heading-md {
+  @apply text-[20px] tablet:text-[36px] font-[500] leading-[120%];
+}
+
+.font-heading-sm {
+  @apply text-[18px] tablet:text-[28px] font-[500] leading-[100%];
+}
+
+.font-body-md {
+  @apply text-[18px] tablet:text-[24px] font-[400] leading-[100%] tablet:leading-[150%];
+}
+
+.font-body-sm {
+  @apply text-[14px] tablet:text-[20px] font-[400] leading-[150%] italic;
+}
