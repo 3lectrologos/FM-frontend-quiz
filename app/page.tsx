@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <div className={``}>
-      <div className={`min-h-screen min-w-fit px-6 bg-light_gray dark:bg-dark_navy bg-[url('/images/pattern-background-mobile-light.svg')] dark:bg-[url('/images/pattern-background-mobile-dark.svg')] bg-right-top bg-no-repeat text-dark_navy dark:text-white`}>
+      <div className={`min-h-screen min-w-fit px-6 bg-light_gray dark:bg-dark_navy bg-[url('/images/pattern-background-mobile-light.svg')] dark:bg-[url('/images/pattern-background-mobile-dark.svg')] bg-left-top bg-no-repeat text-dark_navy dark:text-white`}>
         <Instrumenter quizes={data.quizzes} />
       </div>
     </div>
