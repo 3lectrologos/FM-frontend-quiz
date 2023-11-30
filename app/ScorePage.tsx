@@ -1,6 +1,7 @@
 import Title from '@/app/Title'
 import CategoryIcon from '@/app/CategoryIcon'
 import { Category } from '@/app/types'
+import Button from '@/app/Button'
 
 function ScoreBox({ category, score, maxScore }: { category: Category, score: number, maxScore: number }) {
   return (
@@ -21,20 +22,12 @@ function ScoreBox({ category, score, maxScore }: { category: Category, score: nu
   )
 }
 
-function PlayAgainButton() {
-  return (
-    <button className={`flex flex-row h-14 items-center justify-center rounded-xl p-3 bg-purple text-white font-heading-sm hover:transition hover:bg-purple/50`}>
-      Play Again
-    </button>
-  )
-}
-
 export default function ScorePage({ category, score, maxScore }: { category: Category, score: number, maxScore: number }) {
   return (
     <div className={`flex flex-col gap-y-10`}>
       <Title t1='Quiz completed' t2='You scored...' />
       <ScoreBox category={category} score={score} maxScore={maxScore} />
-      <PlayAgainButton />
+      <Button text='Play Again' />
     </div>
   )
 }
