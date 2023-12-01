@@ -24,6 +24,7 @@ export default function ThemeToggle() {
       <button
         className={`relative inline-flex items-center cursor-pointer outline-none group`}
         onClick={() => theme === 'dark' ? setTheme('light') : setTheme('dark')}
+        aria-label={`Toggle color theme to ${theme === 'dark' ? 'light' : 'dark'}`}
       >
         <div className={`transition flex flex-row shrink-0 w-8 h-5 bg-purple rounded-full p-1 tablet:w-12 tablet:h-7 group-focusable`} />
         <div className={twMerge(
