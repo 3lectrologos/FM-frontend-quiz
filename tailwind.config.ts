@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     screens: {
       'tablet': '768px',
-      'desktop': '1280px'
+      'desktop': '1300px'
     },
     colors: {
       purple: '#A729F5',

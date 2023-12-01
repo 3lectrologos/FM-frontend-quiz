@@ -30,7 +30,7 @@ export default function Instrumenter({ quizes }: { quizes: Quiz[] }) {
   }
 
   return (
-    <div className={`flex flex-col desktop:items-center`}>
+    <div className={`flex flex-col w-full grow max-w-[450px] tablet:grow-0 tablet:max-w-none tablet:w-[640px] desktop:w-[1160px]`}>
       <TopBar category={quiz?.title} />
       <div className={`py-8 desktop:pt-0`}>
         {state === 'landing' &&
