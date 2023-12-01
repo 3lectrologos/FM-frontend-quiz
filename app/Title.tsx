@@ -8,7 +8,7 @@ export default function Title({ t1, t2, sub=undefined, className='' }: { t1: str
         {t2}
       </span>
       {sub && (
-        <span className={`font-body-sm mt-2 text-gray_navy dark:text-light_bluish desktop:mt-12`}>
+        <span className={`font-body-sm mt-2 text-gray_navy dark:text-light_bluish desktop:mt-10`}>
           {sub}
         </span>
       )}
