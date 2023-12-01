@@ -30,3 +30,7 @@
 .font-body-sm {
   @apply text-[14px] tablet:text-[20px] font-[400] leading-[150%] italic;
 }
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
