@@ -8,7 +8,7 @@ import { keyDownLikeButton } from '@/app/util'
 
 export default function ThemeToggle() {
   const [ mounted, setMounted ] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
 
   useEffect(() => setMounted(true), [])
 
@@ -24,17 +24,17 @@ export default function ThemeToggle() {
       </div>
       <div
         className={`relative inline-flex items-center cursor-pointer outline-none group`}
-        onClick={() => theme === 'dark' ? setTheme('light') : setTheme('dark')}
+        onClick={() => resolvedTheme === 'dark' ? setTheme('light') : setTheme('dark')}
         onKeyDown={keyDownLikeButton}
         role='button'
         tabIndex={0}
-        aria-label={`Toggle color theme to ${theme === 'dark' ? 'light' : 'dark'}`}
+        aria-label={`Toggle color theme to ${resolvedTheme === 'dark' ? 'light' : 'dark'}`}
       >
         <div className={`transition flex flex-row shrink-0 w-8 h-5 bg-purple rounded-full p-1 tablet:w-12 tablet:h-7 group-focusable`} />
         <div className={twMerge(
           `absolute top-1 left-1 w-3 h-3 bg-white rounded-full transition tablet:w-5 tablet:h-5`,
-          `${(theme === 'dark') && 'translate-x-full'}`,
-          `${theme}`
+          `${(resolvedTheme === 'dark') && 'translate-x-full'}`,
+          `${resolvedTheme}`
         )}
         />
       </div>
