@@ -3,6 +3,7 @@ import Button from '@/app/Button'
 import { useState } from 'react'
 import { twMerge, twJoin } from 'tailwind-merge'
 import Image from 'next/image'
+import { keyDownLikeButton } from '@/app/util'
 
 function QuestionTitle({ question, idx, maxIdx, className='' }: { question: Question, idx: number, maxIdx: number, className?: string }) {
   return (
@@ -36,7 +37,7 @@ function Options( { options, className='', onClick, selected=null, isCorrect=nul
   return (
     <div className={`flex flex-col gap-y-3 tablet:gap-y-6 ${className}`}>
       {options.slice(0, listIds.length).map((choice, idx) =>
-        <button
+        <div
           className={twJoin(
             `transition-none flex flex-row items-center rounded-xl p-3 gap-x-4 bg-white dark:bg-navy ring-inset ring-[3px] shadow-button-light dark:shadow-button-dark`,
             `${selected === idx && isCorrect === null && 'transition'}`,
@@ -46,6 +47,10 @@ function Options( { options, className='', onClick, selected=null, isCorrect=nul
             `group focusable`
             )}
           key={idx}
+          role='button'
+          tabIndex={0}
+          aria-label={`Select option ${listIds[idx]}`}
+          onKeyDown={keyDownLikeButton}
           onClick={() => onClick(idx)}
         >
           <div className={twMerge(
@@ -67,7 +72,7 @@ function Options( { options, className='', onClick, selected=null, isCorrect=nul
             {correct === idx && isCorrect !== null && <Image src='/images/icon-correct.svg' alt='Correct icon' fill />}
             {selected === idx && isCorrect === false && <Image src='/images/icon-error.svg' alt='Error icon' fill />}
           </div>
-        </button>
+        </div>
       )}
     </div>
   )
