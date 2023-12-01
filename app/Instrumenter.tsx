@@ -12,7 +12,7 @@ import { useReward } from 'react-rewards'
 type State = 'landing' | 'question' | 'score'
 
 export default function Instrumenter({ quizes }: { quizes: Quiz[] }) {
-  const [state, setState] = useState<State>('loading')
+  const [state, setState] = useState<State>('landing')
   const [score, setScore] = useState<number>(0)
   const [quiz, setQuiz] = useState<Quiz|null>(quizes[0])
 
