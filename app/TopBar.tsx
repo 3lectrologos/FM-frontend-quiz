@@ -8,7 +8,7 @@ export default function TopBar({ category=undefined }: { category?: Category }) 
   return (
     <div className={twMerge(
       `flex flex-row items-center py-4 tablet:pt-10`,
-      `desktop:w-[1160px] desktop:py-[85px]`
+      `desktop:w-[1160px] desktop:py-[84px]`
     )}
     >
       <div className={`flex flex-row gap-x-4 items-center ${category ?? 'invisible'} tablet:gap-x-6`}>
