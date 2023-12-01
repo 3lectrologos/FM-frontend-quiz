@@ -24,12 +24,14 @@ function ScoreBox({ category, score, maxScore, className='' }: { category: Categ
 
 export default function ScorePage({ category, score, maxScore, onAgain }: { category: Category, score: number, maxScore: number, onAgain: () => void }) {
   return (
-    <div className={`flex flex-col`}>
+    <div className={`flex flex-col desktop:flex-row desktop:w-[1160px] desktop:justify-between`}>
       <Title className={`mb-10 tablet:mb-16`}
         t1='Quiz completed' t2='You scored...' />
-      <ScoreBox className={`mb-3 tablet:mb-8`}
-        category={category} score={score} maxScore={maxScore} />
-      <Button text='Play Again' onClick={onAgain} />
+      <div className={`flex flex-col desktop:w-[564px]`}>
+        <ScoreBox className={`mb-3 tablet:mb-8`}
+          category={category} score={score} maxScore={maxScore} />
+        <Button text='Play Again' onClick={onAgain} />
+      </div>
     </div>
   )
 }

@@ -1,12 +1,16 @@
 import CategoryIcon from '@/app/CategoryIcon'
 import { Category, CATEGORIES } from '@/app/types'
 import Title from '@/app/Title'
+import {twMerge} from 'tailwind-merge'
 
 function CategoryButton({ category, onClick }: { category: Category, onClick: () => void }) {
   const iconURL = `/images/icon-${category.toLowerCase()}.svg`
   return (
     <div
-      className={`flex flex-row items-center gap-x-4 rounded-xl p-3 bg-white dark:bg-navy shadow-button-light dark:shadow-button-dark tablet:gap-x-8 tablet:rounded-3xl desktop:p-5`}
+      className={twMerge(
+        `flex flex-row items-center gap-x-4 rounded-xl p-3 bg-white cursor-pointer dark:bg-navy shadow-button-light dark:shadow-button-dark tablet:gap-x-8 tablet:rounded-3xl desktop:p-5`,
+        `desktop:w-[564px] hover:transition hover:bg-white/50`
+      )}
       onClick={onClick}
     >
       <CategoryIcon category={category} />
@@ -33,7 +37,10 @@ function Categories({ onClick }: { onClick: (category: Category) => void }) {
 
 export default function LandingPage({ onSelect }: { onSelect: (category: Category) => void }) {
   return (
-    <div className={`flex flex-col gap-y-10 tablet:gap-y-16`}>
+    <div className={twMerge(
+      `flex flex-col gap-y-10 tablet:gap-y-16`,
+      `desktop:w-[1160px] desktop:flex-row desktop:justify-between`
+    )}>
       <Title t1='Welcome to the' t2='Frontend Quiz!' sub='Pick a subject to get started.' />
       <Categories onClick={onSelect} />
     </div>

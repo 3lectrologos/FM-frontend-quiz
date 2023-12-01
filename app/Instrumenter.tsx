@@ -30,9 +30,9 @@ export default function Instrumenter({ quizes }: { quizes: Quiz[] }) {
   }
 
   return (
-    <div className={`flex flex-col`}>
+    <div className={`flex flex-col desktop:items-center`}>
       <TopBar category={quiz?.title} />
-      <div className={`py-8`}>
+      <div className={`py-8 desktop:pt-0`}>
         {state === 'landing' &&
           <LandingPage onSelect={onSelectCategory} />
         }

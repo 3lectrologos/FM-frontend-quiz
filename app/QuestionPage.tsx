@@ -38,10 +38,12 @@ function Options( { options, className='', onClick, selected=null, isCorrect=nul
       {options.slice(0, listIds.length).map((choice, idx) =>
         <button
           className={twMerge(
-            `transition-none flex flex-row items-center rounded-xl p-3 gap-4 bg-white dark:bg-navy ring-inset ring-[3px] shadow-button-light dark:shadow-button-dark`,
+            `transition-none flex flex-row items-center rounded-xl p-3 gap-x-4 bg-white dark:bg-navy ring-inset ring-[3px] shadow-button-light dark:shadow-button-dark`,
             `${selected === idx && isCorrect === null && 'transition'}`,
             `${(selected === idx) ? ((isCorrect === null) ? 'ring-purple' : (isCorrect ? 'ring-green' : 'ring-red')) : 'ring-purple/0'}`,
-            `tablet:rounded-3xl`
+            `tablet:rounded-3xl`,
+            `desktop:w-[564px] desktop:px-5 desktop:py-[18px] desktop:gap-x-8`,
+            `group`
             )}
           key={idx}
           onClick={() => onClick(idx)}
@@ -51,7 +53,8 @@ function Options( { options, className='', onClick, selected=null, isCorrect=nul
             `${selected === idx && isCorrect === null && 'transition'}`,
             `${(selected === idx) && 'text-white'}`,
             `${(selected === idx) && ((isCorrect === null) ? 'bg-purple' : (isCorrect ? 'bg-green' : 'bg-red'))}`,
-            `tablet:w-14 tablet:h-14 tablet:rounded-xl`
+            `tablet:w-14 tablet:h-14 tablet:rounded-xl`,
+            `${(selected !== idx && isCorrect == null) && 'group-hover:transition group-hover:bg-purple/10 group-hover:text-purple'}`,
           )}
           >
             {listIds[idx]}
@@ -111,41 +114,48 @@ export default function QuestionPage({ questions, onFinished }: { questions: Que
   }
 
   return (
-    <div className={`flex flex-col`}>
-      <QuestionTitle className={`mb-6 tablet:mb-10`}
-        idx={idx} maxIdx={questions.length} question={questions[idx]} />
-      <ProgressBar className={`mb-10 tablet:mb-16`}
-        idx={idx} maxIdx={questions.length} />
-      <Options
-        className={`mb-3 tablet:mb-8`}
-        options={questions[idx].options}
-        selected={selected}
-        isCorrect={isCorrect}
-        correct={questions[idx].options.indexOf(questions[idx].answer)}
-        onClick={onClick}
-      />
-      <div className={`mb-3 tablet:mb-8`}>
-      { hasAnswered ?
-        <Button
-          text='Next Question'
-          onClick={goNext}
-        /> :
-        <Button
-          text='Submit Answer'
-          onClick={onSubmit}
-        />
-      }
+    <div className={twMerge(
+      `flex flex-col`,
+      `desktop:flex-row desktop:w-[1160px] desktop:justify-between desktop:gap-x-20`
+      )}>
+      <div className={`flex flex-col desktop:h-[452px] desktop:justify-between`}>
+        <QuestionTitle className={`mb-6 tablet:mb-10 desktop:mb-0`}
+          idx={idx} maxIdx={questions.length} question={questions[idx]} />
+        <ProgressBar className={`mb-10 tablet:mb-16 desktop:mb-0`}
+          idx={idx} maxIdx={questions.length} />
       </div>
-      { showError &&
-        <div className={`flex flex-row items-center gap-x-2 mx-auto`}>
-          <div className={`relative shrink-0 w-8 h-8 tablet:w-10 tablet:h-10`}>
-            <Image src='/images/icon-error.svg' alt='Error icon' fill />
-          </div>
-          <span className={`font-body-md text-center text-red dark:text-white`}>
-            Please select an answer
-          </span>
+      <div className={`flex flex-col`}>
+        <Options
+          className={`mb-3 tablet:mb-8`}
+          options={questions[idx].options}
+          selected={selected}
+          isCorrect={isCorrect}
+          correct={questions[idx].options.indexOf(questions[idx].answer)}
+          onClick={onClick}
+        />
+        <div className={`mb-3 tablet:mb-8`}>
+        { hasAnswered ?
+          <Button
+            text='Next Question'
+            onClick={goNext}
+          /> :
+          <Button
+            text='Submit Answer'
+            onClick={onSubmit}
+          />
+        }
         </div>
-      }
+        { showError &&
+          <div className={`flex flex-row items-center gap-x-2 mx-auto`}>
+            <div className={`relative shrink-0 w-8 h-8 tablet:w-10 tablet:h-10`}>
+              <Image src='/images/icon-error.svg' alt='Error icon' fill />
+            </div>
+            <span className={`font-body-md text-center text-red dark:text-white`}>
+              Please select an answer
+            </span>
+          </div>
+        }
+      </div>
     </div>
   )
 }
