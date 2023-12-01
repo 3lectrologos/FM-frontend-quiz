@@ -1,12 +1,13 @@
 import CategoryIcon from '@/app/CategoryIcon'
 import { Category, CATEGORIES } from '@/app/types'
 import Title from '@/app/Title'
-import {twMerge} from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge'
+import { keyDownLikeButton } from '@/app/util'
 
 function CategoryButton({ category, onClick }: { category: Category, onClick: () => void }) {
   const iconURL = `/images/icon-${category.toLowerCase()}.svg`
   return (
-    <button
+    <div
       className={twMerge(
         `flex flex-row items-center gap-x-4 rounded-xl p-3 bg-white cursor-pointer dark:bg-navy shadow-button-light dark:shadow-button-dark`,
         `tablet:gap-x-8 tablet:rounded-3xl`,
@@ -14,13 +15,17 @@ function CategoryButton({ category, onClick }: { category: Category, onClick: ()
         `hover:transition hover:bg-white/50 dark:hover:bg-navy/50`,
         `focusable`
       )}
+      role='button'
+      tabIndex={0}
+      aria-label={`Select category ${category}`}
+      onKeyDown={keyDownLikeButton}
       onClick={onClick}
     >
       <CategoryIcon category={category} />
       <span className={`font-heading-sm`}>
         {category}
       </span>
-    </button>
+    </div>
   )
 }
 
