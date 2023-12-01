@@ -6,10 +6,13 @@ import {twMerge} from 'tailwind-merge'
 function CategoryButton({ category, onClick }: { category: Category, onClick: () => void }) {
   const iconURL = `/images/icon-${category.toLowerCase()}.svg`
   return (
-    <div
+    <button
       className={twMerge(
-        `flex flex-row items-center gap-x-4 rounded-xl p-3 bg-white cursor-pointer dark:bg-navy shadow-button-light dark:shadow-button-dark tablet:gap-x-8 tablet:rounded-3xl desktop:p-5`,
-        `desktop:w-[564px] hover:transition hover:bg-white/50`
+        `flex flex-row items-center gap-x-4 rounded-xl p-3 bg-white cursor-pointer dark:bg-navy shadow-button-light dark:shadow-button-dark`,
+        `tablet:gap-x-8 tablet:rounded-3xl`,
+        `desktop:w-[564px] desktop:p-5`,
+        `hover:transition hover:bg-white/50 dark:hover:bg-navy/50`,
+        `focusable`
       )}
       onClick={onClick}
     >
@@ -17,7 +20,7 @@ function CategoryButton({ category, onClick }: { category: Category, onClick: ()
       <span className={`font-heading-sm`}>
         {category}
       </span>
-    </div>
+    </button>
   )
 }
 

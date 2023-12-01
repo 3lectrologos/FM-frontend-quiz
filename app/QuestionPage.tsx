@@ -1,7 +1,7 @@
 import { Category, Question } from '@/app/types'
 import Button from '@/app/Button'
 import { useState } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { twMerge, twJoin } from 'tailwind-merge'
 import Image from 'next/image'
 
 function QuestionTitle({ question, idx, maxIdx, className='' }: { question: Question, idx: number, maxIdx: number, className?: string }) {
@@ -37,13 +37,13 @@ function Options( { options, className='', onClick, selected=null, isCorrect=nul
     <div className={`flex flex-col gap-y-3 tablet:gap-y-6 ${className}`}>
       {options.slice(0, listIds.length).map((choice, idx) =>
         <button
-          className={twMerge(
+          className={twJoin(
             `transition-none flex flex-row items-center rounded-xl p-3 gap-x-4 bg-white dark:bg-navy ring-inset ring-[3px] shadow-button-light dark:shadow-button-dark`,
             `${selected === idx && isCorrect === null && 'transition'}`,
             `${(selected === idx) ? ((isCorrect === null) ? 'ring-purple' : (isCorrect ? 'ring-green' : 'ring-red')) : 'ring-purple/0'}`,
             `tablet:rounded-3xl`,
             `desktop:w-[564px] desktop:px-5 desktop:py-[18px] desktop:gap-x-8`,
-            `group`
+            `group focusable`
             )}
           key={idx}
           onClick={() => onClick(idx)}

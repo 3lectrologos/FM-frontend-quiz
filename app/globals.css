@@ -30,3 +30,11 @@
 .font-body-sm {
   @apply text-[14px] tablet:text-[20px] font-[400] leading-[150%] italic;
 }
+
+.focusable {
+  @apply outline-none focus-visible:outline-1 focus-visible:outline-dark_navy/50 focus-visible:outline-offset-2 dark:focus-visible:outline-light_gray/50;
+}
+
+.group-focusable {
+  @apply group-focus-visible:outline-none group-focus-visible:ring-1 group-focus-visible:ring-dark_navy/50 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-light_gray dark:group-focus-visible:ring-light_gray/50 dark:group-focus-visible:ring-offset-dark_navy;
+}

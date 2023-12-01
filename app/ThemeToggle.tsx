@@ -21,21 +21,18 @@ export default function ThemeToggle() {
       <div className={`relative w-4 h-4 hidden dark:block tablet:w-6 tablet:h-6`}>
         <Image src='/images/icon-sun-light.svg' alt='Accessibility icon' fill />
       </div>
-      <label className={`relative inline-flex items-center cursor-pointer`}>
-        <input type='checkbox'
-               value=''
-               className={`hidden`}
-               checked={theme === 'dark'}
-               onChange={() => theme === 'dark' ? setTheme('light') : setTheme('dark')}
-        />
-        <div className={`transition flex flex-row shrink-0 w-8 h-5 bg-purple rounded-full p-1 tablet:w-12 tablet:h-7`} />
+      <button
+        className={`relative inline-flex items-center cursor-pointer outline-none group`}
+        onClick={() => theme === 'dark' ? setTheme('light') : setTheme('dark')}
+      >
+        <div className={`transition flex flex-row shrink-0 w-8 h-5 bg-purple rounded-full p-1 tablet:w-12 tablet:h-7 group-focusable`} />
         <div className={twMerge(
           `absolute top-1 left-1 w-3 h-3 bg-white rounded-full transition tablet:w-5 tablet:h-5`,
           `${(theme === 'dark') && 'translate-x-full'}`,
           `${theme}`
         )}
         />
-      </label>
+      </button>
       <div className={`relative w-4 h-4 dark:hidden tablet:w-6 tablet:h-6`}>
         <Image src='/images/icon-moon-dark.svg' alt='Accessibility icon' fill />
       </div>
