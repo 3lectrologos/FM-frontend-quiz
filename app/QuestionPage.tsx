@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { twMerge, twJoin } from 'tailwind-merge'
 import Image from 'next/image'
 import { keyDownLikeButton } from '@/app/util'
+import ProgressBar from '@/app/ProgressBar'
 
 function QuestionTitle({ question, idx, maxIdx, className='' }: { question: Question, idx: number, maxIdx: number, className?: string }) {
   return (
@@ -14,19 +15,6 @@ function QuestionTitle({ question, idx, maxIdx, className='' }: { question: Ques
       <h1 className={`font-heading-md`}>
         {question.question}
       </h1>
-    </div>
-  )
-}
-
-function ProgressBar({ idx, maxIdx, className='' }: { idx: number, maxIdx: number, className?: string }) {
-  const style = {
-    width: `${idx / maxIdx * 100}%`
-  }
-  return (
-    <div className={`h-4 rounded-full bg-white dark:bg-navy p-1 ${className}`}>
-      <div className={`h-2 bg-purple rounded-full`}
-           style={style}
-      />
     </div>
   )
 }
