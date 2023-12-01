@@ -129,7 +129,7 @@ export default function QuestionPage({ questions, onFinished }: { questions: Que
         <div className={`mb-3 tablet:mb-8`}>
         { hasAnswered ?
           <Button
-            text='Next Question'
+            text={(idx < questions.length - 1) ? 'Next Question' : 'Finish Quiz'}
             onClick={goNext}
           /> :
           <Button
