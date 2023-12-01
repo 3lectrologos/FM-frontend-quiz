@@ -14,7 +14,7 @@ type State = 'landing' | 'question' | 'score'
 export default function Instrumenter({ quizes }: { quizes: Quiz[] }) {
   const [state, setState] = useState<State>('landing')
   const [score, setScore] = useState<number>(0)
-  const [quiz, setQuiz] = useState<Quiz|null>(quizes[0])
+  const [quiz, setQuiz] = useState<Quiz|null>(null)
 
   const confettiColors = ['#FFD700', '#daa520', '#f1af09', '#eaa221', '#ffdc73', '#ffbf00']
   const confettiConfig = {
