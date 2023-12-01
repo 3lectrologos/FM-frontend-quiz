@@ -6,6 +6,7 @@ import QuestionPage from '@/app/QuestionPage'
 import { useState } from 'react'
 import ScorePage from '@/app/ScorePage'
 import LandingPage from '@/app/LandingPage'
+import { shuffleArray } from '@/app/util'
 
 type State = 'landing' | 'question' | 'score'
 
@@ -25,7 +26,12 @@ export default function Instrumenter({ quizes }: { quizes: Quiz[] }) {
   }
 
   function onSelectCategory(category: Category) {
-    setQuiz(() => quizes.find((quiz) => quiz.title === category) ?? quizes[0])
+    const nextQuiz = quizes.find((quiz) => quiz.title === category) ?? quizes[0]
+    nextQuiz.questions = shuffleArray(nextQuiz.questions)
+    for (const question of nextQuiz.questions) {
+      question.options = shuffleArray(question.options)
+    }
+    setQuiz(() => nextQuiz)
     setState(() => 'question')
   }
 

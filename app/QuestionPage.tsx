@@ -54,7 +54,7 @@ function Options( { options, className='', onClick, selected=null, isCorrect=nul
             `${(selected === idx) && 'text-white'}`,
             `${(selected === idx) && ((isCorrect === null) ? 'bg-purple' : (isCorrect ? 'bg-green' : 'bg-red'))}`,
             `tablet:w-14 tablet:h-14 tablet:rounded-xl`,
-            `${(selected !== idx && isCorrect == null) && 'group-hover:transition group-hover:bg-purple/10 group-hover:text-purple'}`,
+            `${(selected !== idx && isCorrect == null) && 'group-hover:transition group-hover:bg-icon_purple group-hover:text-purple'}`,
           )}
           >
             {listIds[idx]}

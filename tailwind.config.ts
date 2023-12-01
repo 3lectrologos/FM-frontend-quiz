@@ -24,7 +24,8 @@ const config: Config = {
       icon_orange: '#FFF1E9',
       icon_green: '#E0FDEF',
       icon_blue: '#EBF0FF',
-      icon_purple: '#F6E7FF'
+      icon_purple: '#F6E7FF',
+      light_purple: '#d394fa'
     },
     boxShadow: {
       'button-light': '0px 16px 40px 0px rgba(143, 160, 193, 0.14)',
