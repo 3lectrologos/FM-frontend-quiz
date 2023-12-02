@@ -75,12 +75,13 @@ export default function QuestionPage({ questions, onFinished }: { questions: Que
   const [score, setScore] = useState<number>(0)
 
   function goNext() {
+    const newScore = score + (isCorrect ? 1 : 0)
     if (idx + 1 === questions.length) {
-      onFinished(score + 1)
+      onFinished(newScore)
       return
     }
     if (isCorrect) {
-      setScore(() => score + 1)
+      setScore(() => newScore)
     }
     setIdx(() => idx + 1)
     setHasAnswered(() => false)
