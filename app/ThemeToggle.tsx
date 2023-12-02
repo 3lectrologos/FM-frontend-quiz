@@ -12,8 +12,7 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true)
-    setTheme('system')
-  }, [setTheme])
+  }, [])
 
   if (!mounted) return null
 
